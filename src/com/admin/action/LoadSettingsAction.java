@@ -2,7 +2,7 @@ package com.admin.action;
 
 import java.util.List;
 
-import com.admin.dbinterface.LoadSettings;
+import com.admin.dbinterface.SettingsLoader;
 import com.admin.properties.PropertyLoader;
 import com.opensymphony.xwork2.ActionSupport;
 

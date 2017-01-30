@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-import com.Mail.MailData;
+import com.email.MailData;
 
 /**
  * CreateBlog is used to create blogs

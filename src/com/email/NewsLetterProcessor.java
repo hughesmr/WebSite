@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.admin.properties.PropertyLoader;
-import com.token.TokenGen;
+import com.token.TokenGeneration;
 import com.utilities.Utilities;
 
 import freemarker.template.Configuration;
@@ -83,8 +83,8 @@ public class NewsLetterProcessor implements Runnable{
 	 */
 	private void emailProcess(){
 		
-		long date = TokenGen.getFutureDate();
-	    byte[] bDate = TokenGen.longToBytes(date);
+		long date = TokenGeneration.getFutureDate();
+	    byte[] bDate = TokenGeneration.longToBytes(date);
 		String compiledBody = "";
 		String token = "";
 		List<String> addresses = Utilities.getEmailAddress(jdbcTemplateObject, userid);
@@ -94,11 +94,11 @@ public class NewsLetterProcessor implements Runnable{
 			
 			for(String email : addresses){ // For each user email address
 				email = email.trim();
-				token = TokenGen.getToken(bDate);
-				InsertUnsubscribeToken.insertUnsub(token, email, date, this.jdbcTemplateObject);
+				token = TokenGeneration.getToken(bDate);
+				UnsubscribeTokenGeneration.insertUnsub(token, email, date, this.jdbcTemplateObject);
 				compiledBody = createBody(token, email);
 
-				SendMail.send(email.replaceAll("\\s+",""), this.subject, compiledBody); // Send email
+				MailSend.send(email.replaceAll("\\s+",""), this.subject, compiledBody); // Send email
 			} 
 			
 			try { 

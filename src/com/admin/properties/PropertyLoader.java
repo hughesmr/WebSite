@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.admin.dbinterface.LoadProperties;
+import com.admin.dbinterface.PropertiesLoader;
 
 /**
  * PropertyLoader is used to load system propteries into
@@ -32,7 +32,7 @@ public class PropertyLoader extends HttpServlet{
 	 */
 	public void init() throws ServletException{
 		
-		LoadProperties props = new LoadProperties();
+		PropertiesLoader props = new PropertiesLoader();
 		
 		bannedWords = props.getBannedWords();
 		fromAdress  = props.getFromAdress();

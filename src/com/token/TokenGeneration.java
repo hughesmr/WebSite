@@ -9,7 +9,7 @@ import com.admin.properties.PropertyLoader;
 /**
  * TokenGen generates tokens used for email unsubscribe links
  */
-public class TokenGen {
+public class TokenGeneration {
 	
 	/**
 	 * getToken gets the token

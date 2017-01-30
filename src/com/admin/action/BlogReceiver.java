@@ -13,9 +13,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.Mail.MailData;
 import com.admin.dbinterface.CreateBlog;
-import com.validate.ValidateCapt;
+import com.email.MailData;
+import com.validate.CaptchaValidation;
 
 /**
  * BlogReceiver receives the new blogs
@@ -44,7 +44,7 @@ public class BlogReceiver extends HttpServlet{
         
         parsedData = parseJson(data); 
    
-        if(captcha != null && ValidateCapt.validate(captcha)){ // If captcha is not null
+        if(captcha != null && CaptchaValidation.validate(captcha)){ // If captcha is not null
      
         	// NOTE that blog creation should return a 1. The reason is
         	// it returns the number of rows created. 

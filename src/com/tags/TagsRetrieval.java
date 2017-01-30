@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * of the blogs
  */
 
-public class GetTags {
+public class TagsRetrieval {
 	
 	private static final String TAGS_BY_BLOG = "SELECT tag FROM tags WHERE blogid = ?"; 
 	

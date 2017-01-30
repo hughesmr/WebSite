@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dbInterface.CommentData;
-import com.admin.dbinterface.LoadCommentsMod;
+import com.admin.dbinterface.CommentsModerationLoader;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -32,14 +32,14 @@ public class CommentModAction extends HttpServlet{
 		String pageNum = null; 					
 		Template view = null;
 		CommentData comData = null;
-		LoadCommentsMod comment = null;
+		CommentsModerationLoader comment = null;
 		pageNum = request.getParameter("comPageNum");
 			
 		if(pageNum.equals("")){
 			pageNum = "1";
 		}
 		
-		comment = new LoadCommentsMod(pageNum);
+		comment = new CommentsModerationLoader(pageNum);
 		comData = comment.loadComments();
 
 		Configuration cfg = new Configuration();

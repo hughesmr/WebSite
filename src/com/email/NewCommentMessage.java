@@ -46,7 +46,7 @@ public class NewCommentMessage implements Runnable{
 	public void run() {
 		
 		String message = compileTemplate();
-		SendMail.send(PropertyLoader.adminEmail, "New Comment", message);
+		MailSend.send(PropertyLoader.adminEmail, "New Comment", message);
 	}
 	
 	/**

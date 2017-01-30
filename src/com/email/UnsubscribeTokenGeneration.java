@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 /**
  * InsertUnsubscribetoken inserts the unsubscribe tokens into the db
  */
-public class InsertUnsubscribeToken {
+public class UnsubscribeTokenGeneration {
 	
 	private static final String INSERT_TOKEN = "INSERT INTO unsubscribe" +
 			" (token, address, date) VALUES (?, ?, ?)";

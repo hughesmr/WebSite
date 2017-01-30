@@ -14,7 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.admin.dbinterface.CommentApproval;
-import com.validate.ValidateCapt;
+import com.validate.CaptchaValidation;
 
 /**
  * ApprovalReciever receives comment approvals
@@ -42,7 +42,7 @@ public class ApprovalReciever extends HttpServlet{
         
         app = parseJson(data); 
        
-        if(captcha != null && ValidateCapt.validate(captcha)){ // If captcha is not null
+        if(captcha != null && CaptchaValidation.validate(captcha)){ // If captcha is not null
     
         	approve = new CommentApproval();
         	approve.approveOrDelete(app);

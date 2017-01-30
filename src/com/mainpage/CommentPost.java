@@ -13,11 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.Mail.MailData;
-import com.Mail.NewCommentMessage;
-import com.dbInterface.CreateUser;
+import com.dbInterface.UserCreation;
 import com.dbInterface.InsertComment;
-import com.validate.ValidateCapt;
+import com.email.MailData;
+import com.email.NewCommentMessage;
+import com.validate.CaptchaValidation;
 
 /**
  * This class is used as the interface for comments that are getting posted
@@ -39,7 +39,7 @@ public class CommentPost extends HttpServlet{
         String rec = "";			// String used to read in data from request stream
         String data = "";			// String used to hold json data
         MailData parsedData = null; // MailData object for holding values
-        CreateUser user = new CreateUser();
+        UserCreation user = new UserCreation();
        
         BufferedReader st = new BufferedReader(new InputStreamReader(request.getInputStream())); // Buffered reader to read in request stream
                 
@@ -50,7 +50,7 @@ public class CommentPost extends HttpServlet{
         parsedData = parseJson(data);
         user.createUser(parsedData.getSubject(), parsedData.getFrom(), parsedData.getRecMail());
        
-        if(captcha != null && ValidateCapt.validate(captcha)){ // If captcha is not null
+        if(captcha != null && CaptchaValidation.validate(captcha)){ // If captcha is not null
         	
         	status = InsertComment.createComment(parsedData, request.getParameter("blogId"));
         	sendCommentMessage(parsedData, request.getParameter("blogId"));

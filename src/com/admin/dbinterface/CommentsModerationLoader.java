@@ -13,12 +13,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.dbInterface.CommentData;
-import com.pageProcessing.PaginationProcessor;
+import com.pageprocessing.PaginationProcessor;
 
 /**
  * This class is used for comment moderation
  */
-public class LoadCommentsMod {
+public class CommentsModerationLoader {
 		
 	private String pageNum; 	 
 	private DataSource dataSource; 			
@@ -36,7 +36,7 @@ public class LoadCommentsMod {
 	 * 
 	 * @param pageNum is the comment page number
 	 */
-	public LoadCommentsMod(String pageNum){
+	public CommentsModerationLoader(String pageNum){
 		    	
 		this.pageNum = pageNum;
 		@SuppressWarnings("resource")

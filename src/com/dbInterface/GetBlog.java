@@ -12,9 +12,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.pageProcessing.PaginationProcessor;
 import com.dbInterface.BlogDataAndPages;
-import com.tags.GetTags;
+import com.pageprocessing.PaginationProcessor;
+import com.tags.TagsRetrieval;
 
 /**
  * This class is used to return a list of blogs. 
@@ -156,7 +156,7 @@ public class GetBlog {
 			blogData[2] = sdf.format(new Date(date));
 			blogData[3] = Integer.toString((Integer)row.get("id"));
 			blogData[4] = getImage((String)row.get("body"));
-			blogData[5] = GetTags.getListofTags(blogData[3].toString(), jdbcTemplateObject);
+			blogData[5] = TagsRetrieval.getListofTags(blogData[3].toString(), jdbcTemplateObject);
 			
 			if(date <= currentDate){
 				

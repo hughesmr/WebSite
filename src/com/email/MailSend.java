@@ -11,7 +11,7 @@ import com.admin.properties.PropertyLoader;
 /**
  * SendMail sends emails
  */
-public class SendMail {
+public class MailSend {
 	
 	 private static final String u = "MAIL USERNAME";
      private static final String pw = "MAIL PASSWORD";

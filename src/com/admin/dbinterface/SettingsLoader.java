@@ -6,7 +6,7 @@ import com.admin.properties.PropertyLoader;
  * This class is used to get settings
  * for admin
  */
-public class LoadSettings {
+public class SettingsLoader {
 	
 	/**
 	 * updateProperty is used to force an update of properties in memory
@@ -15,7 +15,7 @@ public class LoadSettings {
 	 */
 	public static void updateProperty(String type){
 		
-		LoadProperties props = new LoadProperties();
+		PropertiesLoader props = new PropertiesLoader();
 		
 		if(type.equals("bannedWord")){
 			PropertyLoader.bannedWords = props.getBannedWords();

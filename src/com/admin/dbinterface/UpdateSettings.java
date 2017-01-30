@@ -78,7 +78,7 @@ public class UpdateSettings {
 	 */
 	private void updateSystemProps(String type){
 		
-		LoadProperties props = new LoadProperties();
+		PropertiesLoader props = new PropertiesLoader();
 		
 		if(type.equals("bannedWord")){
 			PropertyLoader.bannedWords = props.getBannedWords();
@@ -157,7 +157,7 @@ public class UpdateSettings {
 		jdbcTemplateObject.update(INSERT, new Object[] {prop[0], prop[1]});
 		
 		if(prop[0].equals("bannedWord")){ // If bannedWords update
-			LoadProperties props = new LoadProperties();
+			PropertiesLoader props = new PropertiesLoader();
 			PropertyLoader.bannedWords = props.getBannedWords(); // Update list of bannedWords
 		} 
 	} 

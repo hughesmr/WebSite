@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 
 import com.admin.properties.PropertyLoader;
 import com.dbInterface.CommentData;
-import com.pageProcessing.PaginationProcessor;
+import com.pageprocessing.PaginationProcessor;
 
 /**
  * LoadComment loads a comment from the DB

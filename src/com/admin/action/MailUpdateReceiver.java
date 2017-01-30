@@ -14,7 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.admin.dbinterface.CreateNewsLetter;
-import com.validate.ValidateCapt;
+import com.validate.CaptchaValidation;
 
 /**
  * MailUpdateReciever recieves news letter updates
@@ -43,7 +43,7 @@ public class MailUpdateReceiver extends HttpServlet{
         
         parsedData = parseJson(data); 
        
-        if(captcha != null && ValidateCapt.validate(captcha)){ // If captcha is not null
+        if(captcha != null && CaptchaValidation.validate(captcha)){ // If captcha is not null
      
         	status = news.createNews(parsedData);
 

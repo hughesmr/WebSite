@@ -15,8 +15,8 @@ import org.json.simple.parser.ParseException;
 
 import com.admin.properties.PropertyLoader;
 import com.email.MailData;
-import com.email.SendMail;
-import com.validate.ValidateCapt;
+import com.email.MailSend;
+import com.validate.CaptchaValidation;
 
 /**
  * GetMailData gets messages from the contact page
@@ -46,9 +46,9 @@ public class GetMailData extends HttpServlet{
       
         parsedData = parseJson(data);
         
-        if(captcha != null && ValidateCapt.validate(captcha)){ // If captcha is not null
+        if(captcha != null && CaptchaValidation.validate(captcha)){ // If captcha is not null
     
-        	if(SendMail.send(PropertyLoader.adminEmail, parsedData.getSubject(), (parsedData.getBody() + " " + parsedData.getFrom()))){ // If mail sent successfully 	
+        	if(MailSend.send(PropertyLoader.adminEmail, parsedData.getSubject(), (parsedData.getBody() + " " + parsedData.getFrom()))){ // If mail sent successfully 	
         		
         		response.getWriter().write("{\"status\":\"0\"}");
         	}	

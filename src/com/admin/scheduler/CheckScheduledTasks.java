@@ -10,8 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.Mail.NewBlogProcessor;
-import com.Mail.NewsLetterProcessor;
+import com.email.NewBlogProcessor;
+import com.email.NewsLetterProcessor;
 
 /**
  * CheckScheduledTasks is called to check for scheduled tasks

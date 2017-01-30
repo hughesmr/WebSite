@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * This class is used to enter user info into the DB. It will not enter anything 
  * if the user already exists. 
  */
-public class CreateUser {
+public class UserCreation {
 	
 	private DataSource dataSource = null; 			 
     private JdbcTemplate jdbcTemplateObject = null;  
@@ -24,7 +24,7 @@ public class CreateUser {
     /**
      * Constructor
      */
-    public CreateUser(){
+    public UserCreation(){
     	
 		@SuppressWarnings("resource")
 		ApplicationContext context = 

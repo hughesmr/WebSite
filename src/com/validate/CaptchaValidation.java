@@ -11,7 +11,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * ValidateCapt validates re-captchas 
  */
-public class ValidateCapt {
+public class CaptchaValidation {
 	
 	private static final String url = "https://www.google.com/recaptcha/api/siteverify";
     private static final String secret = "6Le2UgcTAAAAAPAOEDHxzVi_HryUiQcDD84_FIxO";

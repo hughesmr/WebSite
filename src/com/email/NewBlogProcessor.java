@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.admin.properties.PropertyLoader;
-import com.token.TokenGen;
+import com.token.TokenGeneration;
 import com.utilities.Utilities;
 
 import freemarker.template.Configuration;
@@ -83,8 +83,8 @@ public class NewBlogProcessor implements Runnable{
 	 */
 	private void emailProcess(){
 		
-		long date = TokenGen.getFutureDate();
-	    byte[] bDate = TokenGen.longToBytes(date);
+		long date = TokenGeneration.getFutureDate();
+	    byte[] bDate = TokenGeneration.longToBytes(date);
 		String compiledBody = "";
 		String token = "";
 		String subject = createSubject();
@@ -96,11 +96,11 @@ public class NewBlogProcessor implements Runnable{
 			for(String email : addresses){
 				
 				email = email.trim();
-				token = TokenGen.getToken(bDate);
-				InsertUnsubscribeToken.insertUnsub(token, email, date, this.jdbcTemplateObject);
+				token = TokenGeneration.getToken(bDate);
+				UnsubscribeTokenGeneration.insertUnsub(token, email, date, this.jdbcTemplateObject);
 				compiledBody = createBody(token, email);
 			
-				SendMail.send(email.replaceAll("\\s+",""), subject, compiledBody);
+				MailSend.send(email.replaceAll("\\s+",""), subject, compiledBody);
 			}
 			try {
 				Thread.sleep(PropertyLoader.sleepTime);

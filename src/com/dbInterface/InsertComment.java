@@ -13,10 +13,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+
+import com.email.MailData;
+
 import org.owasp.html.Sanitizers;
 import org.owasp.html.PolicyFactory;
-
-import com.Mail.MailData;
 
 /**
  * InsertComment inserts comments into the DB

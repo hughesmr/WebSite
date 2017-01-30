@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.dbInterface.BlogData;
-import com.tags.GetTags;
+import com.tags.TagsRetrieval;
 
 /**
  * IndividualBlogLoader is used to get blod data for one blog plus
@@ -89,7 +89,7 @@ public class IndividualBlogLoader {
 
 		return new BlogData((String)row.get("body"), (String)row.get("title"), 
 				sdf.format(new Date((Long)row.get("date"))), maxId(), Integer.toString((Integer)row.get("id")),
-				GetTags.getListofTags(Integer.toString(blogTagId), jdbcTemplateObject));
+				TagsRetrieval.getListofTags(Integer.toString(blogTagId), jdbcTemplateObject));
 
 	} 
 	

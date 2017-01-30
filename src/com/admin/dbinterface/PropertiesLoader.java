@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * properties from the DB
  * 
  */
-public class LoadProperties {
+public class PropertiesLoader {
 	
 	private ApplicationContext context = null;
 	private DataSource dataSource = null; 			
@@ -40,7 +40,7 @@ public class LoadProperties {
     /**
      * Constructor
      */
-	public LoadProperties(){
+	public PropertiesLoader(){
 		
 		context = new ClassPathXmlApplicationContext("db-beans.xml");  	   
 		dataSource = (DataSource)context.getBean("dataSource");  
