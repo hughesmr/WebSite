@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />   
+    <package name="codeBlog" extends="tiles-default" > 
+            <result-types>
+            	<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+            </result-types>
+            <action name="blog" class="com.mainpage.Blog">  
+            	<result name="success" type="tiles">blog</result>       
+    		</action> 
+      		<action name="blogview" class="com.mainpage.IndividualBlog">  
+                <result name="success" type="tiles">indi-blog</result>       
+            </action>
+            <action name="tags" class="com.mainpage.BlogsByTag">  
+                <result name="success" type="tiles">tags</result>       
+            </action>
+            <action name="aboutme">  
+                <result type="tiles">aboutme</result>       
+            </action> 
+            <action name="resume">  
+                <result type="tiles">resume</result>       
+            </action> 
+            <action name="home"  class="com.mainpage.MainPageAction">  
+                <result type="tiles">home</result>       
+            </action>    
+            <action name="unsubscribe"  class="com.mainpage.Unsubscribe">  
+                <result type="tiles">unsub</result>       
+            </action>  
+            <action name="login">  
+                <result>login.jsp</result>       
+            </action>
+            <action name="admin/">  
+                <result>admin.jsp</result>       
+            </action>
+            <action name="createBlog">  
+                <result>createBlog.jsp</result>       
+            </action>
+            <action name="settings">  
+                <result>settings.jsp</result>       
+            </action>            
+            <action name="loadableSettings" class="com.admin.action.LoadSettingsAction">  
+                <result>loadableSettings.jsp</result>       
+            </action>
+            <action name="commentMod">  
+                <result>commentMod.jsp</result>       
+            </action>
+            <action name="j_spring_security_logout">  
+                <result>login</result>       
+            </action>
+            <action name="main" class="com.admin.action.MainPageAction">  
+                <result>main.jsp</result>       
+            </action>
+            <action name="user">  
+                <result>user.jsp</result>       
+            </action>
+            <action name="mailUpdate">  
+                <result>mailUpdate.jsp</result>       
+            </action>
+            <action name="templateUpdate" class="com.admin.action.LoadTemplateAction">  
+                <result>templateUpdate.jsp</result>       
+            </action>
+            <action name="template">  
+                <result>template.jsp</result>       
+            </action>
+            <action name="carousel" class="com.admin.action.CarouselAction">  
+                <result>carousel.jsp</result>       
+            </action>
+            <action name="contact">  
+                <result type="tiles">contact</result>       
+            </action> 
+     </package>	 
+</struts>

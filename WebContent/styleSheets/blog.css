@@ -1,0 +1,48 @@
+ p{
+	font-size:15px;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+}
+.title_date {
+	display: inline; 
+}
+.title{
+	font-size:23px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 100;
+	text-align:left;
+	display: inline;
+}
+.date{
+	float: right;
+	display: inline;
+}
+.button_alignment{
+	
+	float: right;
+	right:    10px;
+	bottom:   10px;
+}
+form{
+	display: inline;
+}
+.next_prev_button{
+	border: none;
+	background: no-repeat;
+	margin: 0;
+    padding: 0;
+}
+.tags{
+	display: inline;
+	font-size:12px;
+}
+.blog_links{
+	font-size:15px;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+	color:#22C1AC;
+	text-decoration: none;
+}
+.tagColor{
+	color:#22C1AC;
+}

@@ -1,0 +1,46 @@
+.modal{
+	position: fixed;
+	font-family: 'Open Sans', sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.4);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 200ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 200ms ease-in;
+	display:none;
+	
+}
+
+.modal:target {
+	opacity:1;
+	display:block;
+}
+
+.modal > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 3px;
+	background: #d4d4d4;
+	background: -ms-linear-gradient(#fff, #d4d4d4);
+	background: -moz-linear-gradient(#fff, #d4d4d4);
+	background: -webkit-linear-gradient(#fff, #d4d4d4);
+	background: -o-linear-gradient(#fff, #d4d4d4);
+}
+
+.closeLink{
+
+	font-size:15px;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+	color:#22C1AC;
+	line-height: 25px;
+	position: absolute;
+	right: 10px;
+	top: 115px;
+}

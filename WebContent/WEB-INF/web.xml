@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns="http://java.sun.com/xml/ns/javaee" 
+   xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+   id="WebApp_ID" version="3.0">   
+   
+<!-- Spring MVC -->
+	<servlet>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/admin/</url-pattern>
+	</servlet-mapping>
+ 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+ 
+        <!-- Loads Spring Security config file -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/security.xml
+		</param-value>
+	</context-param>
+ 
+	<!-- Spring Security -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
+ 
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	    <url-pattern>/adminInter/*</url-pattern>
+	</filter-mapping>
+  
+   <display-name>Struts 2</display-name>
+   <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+   </welcome-file-list>
+
+  	<filter>
+		<filter-name>ExpiresFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+		<init-param>
+			<param-name>ExpiresByType image</param-name>
+			<param-value>access plus 1 hours</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType text/css</param-name>
+			<param-value>access plus 1 hours</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType application/javascript</param-name>
+			<param-value>access plus 1 hours</param-value>
+		</init-param>
+	</filter>
+	 
+	<filter-mapping>
+		<filter-name>ExpiresFilter</filter-name>
+ 		<url-pattern>/*</url-pattern>
+ 		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	    
+	<filter>
+    	<filter-name>struts2</filter-name>
+      	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter> 
+   
+
+<!--  Added Filter mapping because if you don't when we make the ajax call for mail 
+	  Struts interprets this as an action and then fails. If we add the mappings Struts
+	  will recognize which requests are actions. -->
+
+   <filter-mapping>
+      <filter-name>struts2</filter-name>
+      <url-pattern>/blog/*</url-pattern>
+      <url-pattern>/home/*</url-pattern>
+      <url-pattern>/blogview/*</url-pattern>
+      <url-pattern>/contact/*</url-pattern>
+      <url-pattern>/aboutme/*</url-pattern>
+      <url-pattern>/resume/*</url-pattern>
+      <url-pattern>/tags/*</url-pattern>
+      <url-pattern>/unsubscribe/*</url-pattern>
+	 <url-pattern>/admin/*</url-pattern>
+   </filter-mapping>
+
+	<listener>
+		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+     </listener>
+  <!--  	<listener>  
+   		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+  	</listener>  -->
+    <context-param>
+        <param-name>tilesDefinitions</param-name>
+        <param-value>/WEB-INF/tiles.xml</param-value>
+    </context-param> 
+    
+    <!-- Create serverlet to listen for ajax calls from contacts page -->
+  <servlet>
+  		<servlet-name>mailReceiver</servlet-name>            
+  		<servlet-class>com.Mail.GetMailData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    	<servlet-name>mailReceiver</servlet-name>
+    	<url-pattern>/mailReceiver</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>commentReceiver</servlet-name>            
+	<servlet-class>com.mainpage.CommentPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>commentReceiver</servlet-name>
+    <url-pattern>/commentReceiver/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>comments</servlet-name>            
+    <servlet-class>com.mainpage.Comments</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>comments</servlet-name>
+    <url-pattern>/loadComment</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>tagCloud</servlet-name>            
+    	<servlet-class>com.mainpage.PopulateTagCloud</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+    <servlet-name>tagCloud</servlet-name>
+    <url-pattern>/tagcloud</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>blogReceiver</servlet-name>            
+	<servlet-class>com.admin.action.BlogReceiver</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>blogReceiver</servlet-name>
+    <url-pattern>/adminInter/blogReceiver/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>imageUpload</servlet-name>            
+	<servlet-class>com.admin.action.UploadAction</servlet-class>
+  </servlet>
+    <servlet-mapping>
+  	<servlet-name>imageUpload</servlet-name>
+    <url-pattern>/adminInter/imageUpload/*</url-pattern>
+  </servlet-mapping>
+    <servlet>
+  	<servlet-name>passUpdate</servlet-name>            
+	<servlet-class>com.admin.action.PasswordUpdateAction</servlet-class>
+  </servlet>
+    <servlet-mapping>
+  	<servlet-name>passUpdate</servlet-name>
+    <url-pattern>/adminInter/passUpdate/*</url-pattern>
+  </servlet-mapping>
+   <servlet>
+  	<servlet-name>settingsUpdate</servlet-name>            
+	<servlet-class>com.admin.action.UpdateSettingsAction</servlet-class>
+  </servlet>
+    <servlet-mapping>
+  	<servlet-name>settingsUpdate</servlet-name>
+    <url-pattern>/adminInter/settingsUpdate/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>loadCommentsMod</servlet-name>            
+    <servlet-class>com.admin.action.CommentModAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loadCommentsMod</servlet-name>
+    <url-pattern>/adminInter/loadCommentsMod</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  <servlet-name>CommentApproval</servlet-name>            
+    <servlet-class>com.admin.action.ApprovalReciever</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommentApproval</servlet-name>
+    <url-pattern>/adminInter/commentApproval</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>mailUpdateReciever</servlet-name>            
+	<servlet-class>com.admin.action.MailUpdateReceiver</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>mailUpdateReciever</servlet-name>
+    <url-pattern>/adminInter/mailUpdateReciever/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>templateUpdateReciever</servlet-name>            
+	<servlet-class>com.admin.action.TemplateUpdateAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>templateUpdateReciever</servlet-name>
+    <url-pattern>/adminInter/templateUpdate/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>carouselActionUpdate</servlet-name>            
+<servlet-class>com.admin.action.CarouselActionUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>carouselActionUpdate</servlet-name>
+    <url-pattern>/adminInter/carouselActionUpdate/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>propLoader</servlet-name>            
+	<servlet-class>com.admin.properties.PropertyLoader</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <error-page>
+  <error-code>500</error-code>
+    <location>/500.jsp</location>
+  </error-page>
+    <error-page>
+  <error-code>404</error-code>
+    <location>/404.jsp</location>
+  </error-page>
+ 
+</web-app>

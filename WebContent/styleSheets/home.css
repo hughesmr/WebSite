@@ -1,0 +1,60 @@
+.carousel{
+	z-index:0;
+	width:900px;
+	height:364px;
+	overflow:hidden;
+	background-image:url(/photoBack.png);
+	margin:30px auto;
+	font-family: 'Fauna One', serif;
+	background-image:url(/images/load1.gif);
+	background-repeat: no-repeat;
+	background-position:center;
+	
+}
+.carousel img{
+	z-index:0;
+	width:900px;
+	height:364px;
+	display: none;
+	
+}
+p{
+     font-family: 'Open Sans', sans-serif;
+     font: 15px;
+     font-weight: 100;
+}
+
+		
+/*Used to align next and prev buttons*/			
+.button_div{
+	
+	position: absolute;
+	margin-top:-39px;  
+    right:48%;
+    left:48%;
+    margin-top: -20px;
+}
+.carousel_indicators {
+	
+  z-index: 15;
+  padding-left: 0;
+  text-align: center;
+  list-style: none;  
+}
+.carousel_indicators li {
+
+  float:left; 
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px; 
+  cursor: pointer;
+  background-color: #B40404;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #B40404; 
+  border-radius: 10px;
+}
+.carousel_indicators .active {
+
+  background-color: #B40404;
+}

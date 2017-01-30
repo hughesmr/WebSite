@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+   <!--  <definition name="baseLayout" template="/BaseLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/Header.jsp" />
+        <put-attribute name="menu" value="/Menu.jsp" />
+        <put-attribute name="body" value="/blog.jsp" />
+        <put-attribute name="footer" value="/Footer.jsp" />
+    </definition>-->
+    
+    <definition name="blog" template="/baseview.jsp">  
+        <put-attribute name="body" value="/blog.ftl" />
+        <put-attribute name="right" value="/rightcol.ftl" />
+    </definition>
+    <definition name="unsub" template="/baseview.jsp">  
+        <put-attribute name="body" value="/unsubscribe.ftl" />
+        <put-attribute name="right" value="/rightcolmain.ftl" />
+    </definition>
+    <definition name="indi-blog" template="/baseview.jsp">  
+        <put-attribute name="body" value="/blogview.ftl" />
+        <put-attribute name="right" value="/rightcol.ftl" />
+    </definition>
+    <definition name="aboutme" template="/baseview.jsp">  
+        <put-attribute name="body" value="/aboutme.ftl" />
+        <put-attribute name="right" value="/rightcol.ftl" />
+    </definition>
+    <definition name="resume" template="/baseview.jsp">  
+        <put-attribute name="body" value="/resume.ftl" />
+        <put-attribute name="right" value="/rightcol.ftl" />
+    </definition>
+    <definition name="home" template="/baseview.jsp">  
+        <put-attribute name="body" value="/home.ftl" />
+        <put-attribute name="right" value="/rightcolmain.ftl" />
+    </definition>
+    <definition name="tags" template="/baseview.jsp">  
+        <put-attribute name="body" value="/tags.ftl" />
+        <put-attribute name="right" value="/rightcol.ftl" />
+    </definition>
+        <definition name="contact" template="/baseview.jsp">  
+        <put-attribute name="body" value="/contact.ftl" />
+        <put-attribute name="right" value="/rightcol.ftl" />
+    </definition>
+</tiles-definitions>
